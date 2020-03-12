@@ -9,5 +9,5 @@
 const gameEvents = require('./events')
 
 $(() => {
-  $('.box').on('click', gameEvents.makeMove)
+  $('.box').on('click', gameEvents.selectBox)
 })
