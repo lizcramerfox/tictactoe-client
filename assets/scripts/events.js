@@ -3,16 +3,17 @@ const ui = require('./ui')
 
 // ADD LATER (double-check filepath - this is copied from jquery-ajax-crud training)
   // const getFormFields = require('./../../../lib/get-form-fields')
+const boardItems = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]
 
-
-// Make a function that toggles the
+// Make a function that selects a box when the user clicks it
 const makeMove = function (event) {
   event.preventDefault()
-  const clickedBox = event.target
-  console.log(clickedBox)
+  const selectedBox = event.target
+  console.log(selectedBox)
+  if (selectedBox !== undefined) {
+    console.log('box is available')
+  }
 }
-// Make an event handler to select a specific g
-
 
 // We are exporting (outputing) an object with our event handlers inside of it
 module.exports = {

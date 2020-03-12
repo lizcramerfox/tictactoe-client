@@ -21,8 +21,8 @@ Here's a rough sketch of what you should do and in what order:
 
 ### Game UI Round 1
 
-1.  [ ] Design a simple game board
-1.  [ ] Add a click handler for when a space on the game board is clicked
+1.  [x] Design a simple game board
+1.  [x] Add a click handler for when a space on the game board is clicked
 1.  [ ] If the user clicks on a valid space then add their X or O
 1.  [ ] Do not allow users to add an X or O to an invalid space
 
