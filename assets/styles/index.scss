@@ -1,5 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 
-#gameboard-wrapper {
-  width: 50vw
+.container {
+  width: 50vw;
+  height: 50vh;
+}
+
+.box {
+  border: 1px solid #000;
+  height: 10em;
+  width: 10em;
 }

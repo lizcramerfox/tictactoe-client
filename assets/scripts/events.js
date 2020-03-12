@@ -7,8 +7,9 @@ const ui = require('./ui')
 
 // Make a function that toggles the
 const makeMove = function (event) {
-  const box = event.target
-  console.log(box)
+  event.preventDefault()
+  const clickedBox = event.target
+  console.log(clickedBox)
 }
 // Make an event handler to select a specific g
 
