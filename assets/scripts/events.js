@@ -37,17 +37,17 @@ const selectBox = function (event) {
 const checkForWinner = function () {
   // if ANY of the following are true:
   if (
-    ((gameboard[0] === gameboard[1] && gameboard[1] === gameboard[2])) || // 0=1=2 OR
-    ((gameboard[3] === gameboard[4] && gameboard[4] === gameboard[5])) || // 3=4=5
-    ((gameboard[6] === gameboard[7] && gameboard[7] === gameboard[8])) || // 6=7=8
-    ((gameboard[0] === gameboard[3] && gameboard[3] === gameboard[6])) || // 0=3=6
-    ((gameboard[1] === gameboard[4] && gameboard[4] === gameboard[7])) || // 1=4=7
-    ((gameboard[2] === gameboard[5] && gameboard[5] === gameboard[8])) || // 2=5=8
-    ((gameboard[0] === gameboard[4] && gameboard[4] === gameboard[8])) || // 0=4=8
-    ((gameboard[6] === gameboard[4] && gameboard[4] === gameboard[2]))) { // 6=4=2
+    ((gameboard[0] === gameboard[1]) && (gameboard[1] === gameboard[2]) && (gameboard[0] !== null)) || // 0=1=2 OR
+    ((gameboard[3] === gameboard[4]) && (gameboard[4] === gameboard[5]) && (gameboard[3] !== null)) || // 3=4=5
+    ((gameboard[6] === gameboard[7]) && (gameboard[7] === gameboard[8]) && (gameboard[6] !== null)) || // 6=7=8
+    ((gameboard[0] === gameboard[3]) && (gameboard[3] === gameboard[6]) && (gameboard[0] !== null)) || // 0=3=6
+    ((gameboard[1] === gameboard[4]) && (gameboard[4] === gameboard[7]) && (gameboard[1] !== null)) || // 1=4=7
+    ((gameboard[2] === gameboard[5]) && (gameboard[5] === gameboard[8]) && (gameboard[2] !== null)) || // 2=5=8
+    ((gameboard[0] === gameboard[4]) && (gameboard[4] === gameboard[8]) && (gameboard[0] !== null)) || // 0=4=8
+    ((gameboard[6] === gameboard[4]) && (gameboard[4] === gameboard[2]) && (gameboard[6] !== null))) { // 6=4=2
     console.log('winner!')
   } else {
-    console.log('game in progress - make a move')
+    console.log('no winner')
   }
 }
 
