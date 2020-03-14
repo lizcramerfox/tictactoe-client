@@ -10,31 +10,34 @@ const gameboard = [null, null, null, null, null, null, null, null, null]
 // USER SELECTS & MARKS UP BOARD w/ MARKERS
 let currentPlayer = 'X'
 // Make a function that selects a box when the user clicks it
-const selectBox = function (event) {
-  const selectedBox = event.target
-  const boxId = event.target.id
-  if (gameboard[boxId] === null) {
-    gameboard[boxId] = currentPlayer
-  }
-  const selectedBoxText = $(selectedBox).text() // '' , 'X', 'O'
-  // if space is empty then add play
-  if (selectedBoxText === '') {
-    // add current player's marker to board
-    $(selectedBox).text(currentPlayer)
-    // change turn
-    if (currentPlayer === 'X') {
-      currentPlayer = 'O'
-    } else {
-      currentPlayer = 'X'
+const selectBox = function(event) {
+  const isWinner = checkForWinner()
+  if (isWinner === false) {
+    const selectedBox = event.target
+    const boxId = event.target.id
+    if (gameboard[boxId] === null) {
+      gameboard[boxId] = currentPlayer
     }
-    // else invalid move
-  } else {
-    console.log('box has already been taken')
+    const selectedBoxText = $(selectedBox).text() // '' , 'X', 'O'
+    // if space is empty then add play
+    if (selectedBoxText === '') {
+      // add current player's marker to board
+      $(selectedBox).text(currentPlayer)
+      // change turn
+      if (currentPlayer === 'X') {
+        currentPlayer = 'O'
+      } else {
+        currentPlayer = 'X'
+      }
+      // else invalid move
+    } else {
+      console.log('box has already been taken')
+    }
   }
 }
 // CHECK FOR WINNER:
 // Pass the array through a function to check if:
-const checkForWinner = function () {
+const checkForWinner = function() {
   // if ANY of the following are true:
   if (
     ((gameboard[0] === gameboard[1]) && (gameboard[1] === gameboard[2]) && (gameboard[0] !== null)) || // 0=1=2 OR
@@ -45,9 +48,9 @@ const checkForWinner = function () {
     ((gameboard[2] === gameboard[5]) && (gameboard[5] === gameboard[8]) && (gameboard[2] !== null)) || // 2=5=8
     ((gameboard[0] === gameboard[4]) && (gameboard[4] === gameboard[8]) && (gameboard[0] !== null)) || // 0=4=8
     ((gameboard[6] === gameboard[4]) && (gameboard[4] === gameboard[2]) && (gameboard[6] !== null))) { // 6=4=2
-    console.log('winner!')
+    return true
   } else {
-    console.log('no winner')
+    return false
   }
 }
 

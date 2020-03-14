@@ -33,7 +33,7 @@ Here's a rough sketch of what you should do and in what order:
 1.  [x] Add current player to your JavaScript representation of the board
     -  [x] Current player rotates between X and O
     -  [x] Can not choose already occupied spots
-1.  [ ] Check Board for Winner
+1.  [x] Check Board for Winner
 
 ### Game UI Round 2
 
