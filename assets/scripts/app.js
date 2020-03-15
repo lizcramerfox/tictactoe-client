@@ -10,5 +10,4 @@ const gameEvents = require('./events')
 
 $(() => {
   $('.box').on('click', gameEvents.selectBox)
-  $('button').on('click', gameEvents.checkForWinner)
 })
