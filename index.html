@@ -12,7 +12,11 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <div class="container">
+      <header>
+        <h1>Tic Tac Toe</h1>
+      </header>
+
+      <div class="gameboard container">
         <div class="row">
           <div class="col-4 box" id="0"></div>
           <div class="col-4 box" id="1"></div>
@@ -29,6 +33,10 @@
           <div class="col-4 box" id="8"></div>
         </div>
       </div>
-      <div id="message"></div>
+
+      <div class="bg-info" id="current-player"></div>
+
+      <div class="alert alert-warning" role="alert" id="message"></div>
+
     </body>
 </html>

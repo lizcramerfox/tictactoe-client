@@ -5,10 +5,9 @@
 // ADD LATER (double-check filepath - this is copied from jquery-ajax-crud training)
 // const getFormFields = require('./../../../lib/get-form-fields')
 
-const gameboard = [null, null, null, null, null, null, null, null, null]
+let gameboard
+let currentPlayer
 
-// USER SELECTS & MARKS UP BOARD w/ MARKERS
-let currentPlayer = 'X'
 // Make a function that selects a box when the user clicks it
 const selectBox = function(event) {
   // check if the board has a winner
@@ -18,30 +17,27 @@ const selectBox = function(event) {
   // let player make a move
   const selectedBox = event.target
   const boxId = event.target.id
-  if (gameboard[boxId] === null) {
-    gameboard[boxId] = currentPlayer
-  }
-  const selectedBoxText = $(selectedBox).text() // '' , 'X', 'O'
-  // if space is empty then add play
-  if (selectedBoxText !== '') {
+  if (gameboard[boxId] !== null) {
     console.log('box has already been taken')
     return
   }
-  // add current player's marker to board
-  $(selectedBox).text(currentPlayer)
+  placeMarker(currentPlayer, boxId, selectedBox)
 
   if (isWinner()) {
     console.log(currentPlayer + ' wins')
   } else if (isDraw()) {
     console.log('game over - draw')
   } else {
-    if (currentPlayer === 'X') {
-      currentPlayer = 'O'
-    } else {
-      currentPlayer = 'X'
-    }
+    switchPlayer()
   }
 }
+
+const resetBoard = function() {
+  gameboard = [null, null, null, null, null, null, null, null, null]
+  currentPlayer = ''
+  switchPlayer()
+}
+
 
 // CHECK FOR WINNER:
 // Pass the array through a function to check if:
@@ -73,6 +69,22 @@ const isDraw = function() {
   )
 }
 
+const switchPlayer = function() {
+  if (currentPlayer !== 'X') {
+    currentPlayer = 'X'
+  } else {
+    currentPlayer = 'O'
+  }
+  console.log(currentPlayer + ' is current player')
+  $('#current-player').text(currentPlayer + ' take your turn')
+}
+
+const placeMarker = function(currentPlayer, boxId, selectedBox) {
+  gameboard[boxId] = currentPlayer
+  $(selectedBox).text(currentPlayer)
+}
+
 module.exports = {
-  selectBox
+  selectBox,
+  resetBoard
 }

@@ -10,4 +10,5 @@ const gameEvents = require('./events')
 
 $(() => {
   $('.box').on('click', gameEvents.selectBox)
+  gameEvents.resetBoard()
 })

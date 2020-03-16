@@ -1,5 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 
+h1 {
+  text-align: center;
+  padding: 2em 0;
+}
+
 .container {
   width: 660px;
   height: 660px;
@@ -20,4 +25,12 @@
   color: #909;
   font-size: 1.5em;
   text-align: center;
+}
+
+#current-player {
+  margin: 0 auto;
+  text-align: center;
+  width: 660px;
+  padding: 1em 0;
+  color: #fff;
 }
