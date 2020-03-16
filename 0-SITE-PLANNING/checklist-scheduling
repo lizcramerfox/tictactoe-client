@@ -39,8 +39,8 @@ Here's a rough sketch of what you should do and in what order:
 
 1.  [x] Update the game engine when the game board is updated
 1.  [x] Add messaging for the user when the turn changes
-1.  [ ] Add messaging for the user when the user clicks on an invalid space
-1.  [ ] Add messaging for the user when the game is over (win or draw)
+1.  [x] Add messaging for the user when the user clicks on an invalid space
+1.  [x] Add messaging for the user when the game is over (win or draw)
 1.  [x] Do not allow users to add an X or O to any spaces after the game is over
 
 ### Authentication

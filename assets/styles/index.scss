@@ -17,20 +17,17 @@ h1 {
 }
 
 #message {
-  border: 1px solid #000;
-  background: #aaa;
   width: 660px;
-  padding: 1em;
+  padding: 1em 0;
   margin: 0 auto;
-  color: #909;
-  font-size: 1.5em;
+  color: #000;
   text-align: center;
 }
 
 #current-player {
-  margin: 0 auto;
-  text-align: center;
   width: 660px;
   padding: 1em 0;
+  margin: 0 auto;
   color: #fff;
+  text-align: center;
 }

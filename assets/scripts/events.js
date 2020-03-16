@@ -10,22 +10,33 @@ let currentPlayer
 
 // Make a function that selects a box when the user clicks it
 const selectBox = function(event) {
-  // check if the board has a winner
+
+  // check if the board has a winner OR a draw (game is over)
   if (isWinner()) {
     return
   }
+  if (isDraw()) {
+    return
+  }
+  // clear any existing alert messages before making next valid move
+  clearAlert()
   // let player make a move
   const selectedBox = event.target
   const boxId = event.target.id
   if (gameboard[boxId] !== null) {
     console.log('box has already been taken')
+    $('#message').text('Invalid move: please choose a blank square')
     return
   }
   placeMarker(currentPlayer, boxId, selectedBox)
 
   if (isWinner()) {
+    $('#message').text('GAME OVER - ' + currentPlayer + ' wins!')
+    $('#current-player').text('')
     console.log(currentPlayer + ' wins')
   } else if (isDraw()) {
+    $('#message').text('GAME OVER - draw game')
+    $('#current-player').text('')
     console.log('game over - draw')
   } else {
     switchPlayer()
@@ -82,6 +93,10 @@ const switchPlayer = function() {
 const placeMarker = function(currentPlayer, boxId, selectedBox) {
   gameboard[boxId] = currentPlayer
   $(selectedBox).text(currentPlayer)
+}
+
+const clearAlert = function() {
+  $('#message').text('')
 }
 
 module.exports = {
