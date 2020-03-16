@@ -11,4 +11,8 @@ const gameEvents = require('./events')
 $(() => {
   $('.box').on('click', gameEvents.selectBox)
   gameEvents.resetBoard()
+  $('#sign-up').on('submit', gameEvents.onSignUp)
+  $('#sign-in').on('submit', gameEvents.onSignIn)
+  $('#change-pw').on('submit', gameEvents.onChangePw)
+  $('#sign-out').on('submit', gameEvents.onSignOut)
 })

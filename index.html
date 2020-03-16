@@ -16,6 +16,43 @@
         <h1>Tic Tac Toe</h1>
       </header>
 
+      <div id="auth-message"></div>
+
+      <form id='sign-up' class="authentication">
+        <fieldset>
+          <legend>Sign Up</legend>
+          <input type="text" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+          <input type="submit" value="Sign Up!">
+        </fieldset>
+      </form>
+
+      <form id='sign-in' class="authentication">
+        <fieldset>
+          <legend>Sign In</legend>
+          <input type="text" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="submit" value="Sign In!">
+        </fieldset>
+      </form>
+
+      <form id='change-pw' class="authentication">
+        <fieldset>
+          <legend>Change Password</legend>
+          <input type="password" name="passwords[old]" placeholder="Old Password">
+          <input type="password" name="passwords[new]" placeholder="New Password">
+          <input type="submit" value="Change Password">
+        </fieldset>
+      </form>
+
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign Out</legend>
+          <input type="submit" value="Sign Out">
+        </fieldset>
+      </form>
+
       <div class="gameboard container">
         <div class="row">
           <div class="col-4 box" id="0"></div>
@@ -34,9 +71,8 @@
         </div>
       </div>
 
-      <div class="bg-info" id="current-player"></div>
-
-      <div class="alert alert-warning" role="alert" id="message"></div>
+      <div id="current-player" class="bg-info"></div>
+      <div id="game-message" class="alert alert-warning" role="alert"></div>
 
     </body>
 </html>

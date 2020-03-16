@@ -45,12 +45,12 @@ Here's a rough sketch of what you should do and in what order:
 
 ### Authentication
 
-1.  [ ] Review [api-token-auth](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-token-auth)
-1.  [ ] Sign Up (curl then web app)
-1.  [ ] Sign In (curl then web app)
-1.  [ ] Change Password (curl then web app)
-1.  [ ] Sign Out (curl then web page)
-1.  [ ] All API calls have success or failure messages
+1.  [x] Review [api-token-auth](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-token-auth)
+1.  [x] Sign Up (curl then web app)
+1.  [x] Sign In (curl then web app)
+1.  [x] Change Password (curl then web app)
+1.  [x] Sign Out (curl then web page)
+1.  [x] All API calls have success or failure messages
 
 ### Game API
 

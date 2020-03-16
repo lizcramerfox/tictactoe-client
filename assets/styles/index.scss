@@ -2,7 +2,15 @@
 
 h1 {
   text-align: center;
-  padding: 2em 0;
+  padding: 1em 0;
+}
+
+.login {
+  width: 660px;
+  margin: 1em auto;
+  padding: .5em;
+  background-color: #e8e8e8;
+  border: 1px solid #000;
 }
 
 .container {
@@ -14,9 +22,20 @@ h1 {
   border: 1px solid #000;
   height: 200px;
   width: 10em;
+  text-align: center;
 }
 
-#message {
+.failure {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.success {
+  background-color: #d4edda;
+  color: #2c693a;
+}
+
+#game-message {
   width: 660px;
   padding: 1em 0;
   margin: 0 auto;

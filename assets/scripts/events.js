@@ -1,16 +1,52 @@
-// const api = require('./api')
-// const ui = require('./ui')
-// const app = require('/.app')
-
-// ADD LATER (double-check filepath - this is copied from jquery-ajax-crud training)
-// const getFormFields = require('./../../../lib/get-form-fields')
+const api = require('./api')
+const ui = require('./ui')
+// const app = require('./app')
+const getFormFields = require('./../../lib/get-form-fields')
 
 let gameboard
 let currentPlayer
 
-// Make a function that selects a box when the user clicks it
-const selectBox = function(event) {
+// *** AUTHENTICATION ***
+// Sign-Up (New User)
+const onSignUp = function (event) {
+  event.preventDefault()
+  console.log('Signing up')
+  const data = getFormFields(event.target)
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
+}
+// Sign-In (Existing User, NOT Currently Logged-In)
+const onSignIn = function (event) {
+  event.preventDefault()
+  console.log('Signing in')
+  const data = getFormFields(event.target)
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
+// Change Password (Currently Logged-In User)
+const onChangePw = function (event) {
+  event.preventDefault()
+  console.log('Changing Password')
+  const data = getFormFields(event.target)
+  api.changePw(data)
+    .then(ui.changePwSuccess)
+    .catch(ui.changePwFailure)
+}
 
+// Sign Out (Currently Logged-In User)
+const onSignOut = function (event) {
+  event.preventDefault()
+  console.log('Logging Out')
+  const data = getFormFields(event.target)
+  api.signOut(data)
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
+}
+// *** GAME ENGINE ***
+// Select a box when user clicks it
+const selectBox = function (event) {
   // check if the board has a winner OR a draw (game is over)
   if (isWinner()) {
     return
@@ -25,17 +61,17 @@ const selectBox = function(event) {
   const boxId = event.target.id
   if (gameboard[boxId] !== null) {
     console.log('box has already been taken')
-    $('#message').text('Invalid move: please choose a blank square')
+    $('#game-message').text('Invalid move: please choose a blank square')
     return
   }
   placeMarker(currentPlayer, boxId, selectedBox)
 
   if (isWinner()) {
-    $('#message').text('GAME OVER - ' + currentPlayer + ' wins!')
+    $('#game-message').text('GAME OVER - ' + currentPlayer + ' wins!')
     $('#current-player').text('')
     console.log(currentPlayer + ' wins')
   } else if (isDraw()) {
-    $('#message').text('GAME OVER - draw game')
+    $('#game-message').text('GAME OVER - draw game')
     $('#current-player').text('')
     console.log('game over - draw')
   } else {
@@ -43,16 +79,15 @@ const selectBox = function(event) {
   }
 }
 
-const resetBoard = function() {
+const resetBoard = function () {
   gameboard = [null, null, null, null, null, null, null, null, null]
   currentPlayer = ''
   switchPlayer()
 }
 
-
 // CHECK FOR WINNER:
 // Pass the array through a function to check if:
-const isWinner = function() {
+const isWinner = function () {
   // if ANY of the following are true:
   return (
     ((gameboard[0] === gameboard[1]) && (gameboard[1] === gameboard[2]) && (gameboard[0] !== null)) || // 0=1=2 OR
@@ -66,7 +101,7 @@ const isWinner = function() {
   )
 }
 
-const isDraw = function() {
+const isDraw = function () {
   return (
     (gameboard[0] !== null) &&
     (gameboard[1] !== null) &&
@@ -80,7 +115,7 @@ const isDraw = function() {
   )
 }
 
-const switchPlayer = function() {
+const switchPlayer = function () {
   if (currentPlayer !== 'X') {
     currentPlayer = 'X'
   } else {
@@ -90,16 +125,20 @@ const switchPlayer = function() {
   $('#current-player').text(currentPlayer + ' take your turn')
 }
 
-const placeMarker = function(currentPlayer, boxId, selectedBox) {
+const placeMarker = function (currentPlayer, boxId, selectedBox) {
   gameboard[boxId] = currentPlayer
   $(selectedBox).text(currentPlayer)
 }
 
-const clearAlert = function() {
+const clearAlert = function () {
   $('#message').text('')
 }
 
 module.exports = {
   selectBox,
-  resetBoard
+  resetBoard,
+  onSignUp,
+  onSignIn,
+  onChangePw,
+  onSignOut
 }
