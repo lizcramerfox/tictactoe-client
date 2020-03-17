@@ -35,6 +35,7 @@ const onChangePw = function (event) {
   api.changePw(data)
     .then(ui.changePwSuccess)
     .catch(ui.changePwFailure)
+  document.getElementById('change-pw').reset()
 }
 
 // Sign Out (Currently Logged-In User)
