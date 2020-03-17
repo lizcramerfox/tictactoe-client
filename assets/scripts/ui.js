@@ -20,6 +20,10 @@ const signInSuccess = function (data) {
   $('#auth-message').text('Signed in Successfully')
   $('#auth-message').removeClass()
   $('#auth-message').addClass('success')
+  $('#sign-up').addClass('hidden')
+  $('#sign-in').addClass('hidden')
+  $('#change-pw').removeClass('hidden')
+  $('#sign-out').removeClass('hidden')
   console.log('signInSuccess data is: ', data)
   store.user = data.user
 }
@@ -49,6 +53,10 @@ const signOutSuccess = function (data) {
   $('#auth-message').text('Signed Out Successfully')
   $('#auth-message').removeClass()
   $('#auth-message').addClass('success')
+  $('#sign-up').removeClass('hidden')
+  $('#sign-in').removeClass('hidden')
+  $('#change-pw').addClass('hidden')
+  $('#sign-out').addClass('hidden')
   console.log('signOutSuccess data is: ', data)
 }
 

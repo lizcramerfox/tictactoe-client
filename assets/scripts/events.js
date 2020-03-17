@@ -15,6 +15,7 @@ const onSignUp = function (event) {
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
+  document.getElementById('sign-up').reset()
 }
 // Sign-In (Existing User, NOT Currently Logged-In)
 const onSignIn = function (event) {
@@ -24,6 +25,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
+  document.getElementById('sign-in').reset()
 }
 // Change Password (Currently Logged-In User)
 const onChangePw = function (event) {
