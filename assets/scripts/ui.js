@@ -1,25 +1,26 @@
 'use strict'
 
 const store = require('./store')
+const gameEvents = require('./events.js')
 
 const signUpSuccess = function (data) {
-  $('#auth-message').text('Signed up Successfully')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('success')
+  $('#api-message').text('Signed up Successfully')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('success')
   console.log('signUpSuccess data is: ', data)
 }
 
 const signUpFailure = function (error) {
-  $('#auth-message').text('Error on Signup')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('failure')
+  $('#api-message').text('Error on Signup')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('failure')
   console.log('signUpFailure data is: ', error)
 }
 
 const signInSuccess = function (data) {
-  $('#auth-message').text('Signed in Successfully')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('success')
+  $('#api-message').text('Signed in Successfully')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('success')
   $('#sign-up').addClass('hidden')
   $('#sign-in').addClass('hidden')
   $('#change-pw').removeClass('hidden')
@@ -29,30 +30,30 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function (error) {
-  $('#auth-message').text('Error on Sign-In')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('failure')
+  $('#api-message').text('Error on Sign-In')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('failure')
   console.log('signInFailure data is: ', error)
 }
 
 const changePwSuccess = function (data) {
-  $('#auth-message').text('Password Changed Successfully')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('success')
+  $('#api-message').text('Password Changed Successfully')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('success')
   console.log('changePwSuccess data is: ', data)
 }
 
 const changePwFailure = function (error) {
-  $('#auth-message').text('Error on Change Password')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('failure')
+  $('#api-message').text('Error on Change Password')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('failure')
   console.log('changePwFailure data is: ', error)
 }
 
 const signOutSuccess = function (data) {
-  $('#auth-message').text('Signed Out Successfully')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('success')
+  $('#api-message').text('Signed Out Successfully')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('success')
   $('#sign-up').removeClass('hidden')
   $('#sign-in').removeClass('hidden')
   $('#change-pw').addClass('hidden')
@@ -61,11 +62,67 @@ const signOutSuccess = function (data) {
 }
 
 const signOutFailure = function (error) {
-  $('#auth-message').text('Error on Sign Out')
-  $('#auth-message').removeClass()
-  $('#auth-message').addClass('failure')
+  $('#api-message').text('Error on Sign Out')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('failure')
   console.log('signOutFailure data is: ', error)
 }
+
+const startNewGameSuccess = function (data) {
+  $('#api-message').text('New Game Started')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('success')
+  store.game = data.game
+  drawGame()
+}
+
+const drawGame = function () {
+  let i
+  for (i = 0; i < store.game.cells.length; i++) {
+    $('#' + i).text(store.game.cells[i])
+  }
+}
+
+const startNewGameFailure = function () {
+  $('#api-message').text('Error on Starting New Game')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('failure')
+  console.log('Failed to Create New Game')
+}
+
+const updateGameSuccess = function () {
+  $('#api-message').text('Game Saved Successfully')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('success')
+  console.log('game was successfully saved')
+}
+
+const updateGameFailure = function () {
+  $('#api-message').text('Error Updating Server - Failed to Save Game')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('failure')
+  console.log('Failed to Create New Game')
+}
+
+const getAllGamesSuccess = function () {
+  $('#api-message').text('Success retrieving all game records')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('success')
+  console.log('all game data should now be on screen')
+}
+
+const getAllGamesFailure = function () {
+  $('#api-message').text('Failure retrieving all game records')
+  $('#api-message').removeClass()
+  $('#api-message').addClass('failure')
+  console.log('failed to retrieve data for all games')
+}
+// const updateGameFailure = function () {
+//   $('#api-message').text('Error Updating Server - Failed to Save Game')
+//   $('#api-message').removeClass()
+//   $('#api-message').addClass('failure')
+//   console.log('Failed to Create New Game')
+// }
 // export ui functions so they can be used in events.js
 // if your key has the same name as its value, you can just write the name once
 module.exports = {
@@ -76,5 +133,11 @@ module.exports = {
   changePwSuccess,
   changePwFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  startNewGameSuccess,
+  startNewGameFailure,
+  updateGameSuccess,
+  updateGameFailure,
+  getAllGamesSuccess,
+  getAllGamesFailure
 }

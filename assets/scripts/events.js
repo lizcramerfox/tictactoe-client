@@ -1,9 +1,8 @@
 const api = require('./api')
 const ui = require('./ui')
-// const app = require('./app')
+const store = require('./store')
 const getFormFields = require('./../../lib/get-form-fields')
 
-let gameboard
 let currentPlayer
 
 // *** AUTHENTICATION ***
@@ -47,6 +46,28 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
+
+// GAME SAVING & RETRIEVAL
+const onStartNewGame = function (event) {
+  event.preventDefault()
+  api.startNewGame()
+    .then(ui.startNewGameSuccess)
+    .catch(ui.startNewGameFailure)
+}
+// const onUpdateGame = function (event) {
+//   event.preventDefault()
+//   api.updateGame()
+//     .then(ui.updateGameSuccess)
+//     .catch(ui.updateGameFailure)
+// }
+
+const onGetAllGames = function (event) {
+  event.preventDefault()
+  api.getAllGames()
+    .then(ui.getAllGamesSuccess)
+    .catch(ui.getAllGamesFailure)
+}
+
 // *** GAME ENGINE ***
 // Select a box when user clicks it
 const selectBox = function (event) {
@@ -62,7 +83,7 @@ const selectBox = function (event) {
   // let player make a move
   const selectedBox = event.target
   const boxId = event.target.id
-  if (gameboard[boxId] !== null) {
+  if (store.game.cells[boxId] !== '') {
     console.log('box has already been taken')
     $('#game-message').text('Invalid move: please choose a blank square')
     return
@@ -80,61 +101,71 @@ const selectBox = function (event) {
   } else {
     switchPlayer()
   }
+  updateGame(boxId, currentPlayer, isOver())
 }
 
-const resetBoard = function () {
-  gameboard = [null, null, null, null, null, null, null, null, null]
-  currentPlayer = ''
-  switchPlayer()
-}
+
 
 // CHECK FOR WINNER:
 // Pass the array through a function to check if:
 const isWinner = function () {
   // if ANY of the following are true:
   return (
-    ((gameboard[0] === gameboard[1]) && (gameboard[1] === gameboard[2]) && (gameboard[0] !== null)) || // 0=1=2 OR
-    ((gameboard[3] === gameboard[4]) && (gameboard[4] === gameboard[5]) && (gameboard[3] !== null)) || // 3=4=5
-    ((gameboard[6] === gameboard[7]) && (gameboard[7] === gameboard[8]) && (gameboard[6] !== null)) || // 6=7=8
-    ((gameboard[0] === gameboard[3]) && (gameboard[3] === gameboard[6]) && (gameboard[0] !== null)) || // 0=3=6
-    ((gameboard[1] === gameboard[4]) && (gameboard[4] === gameboard[7]) && (gameboard[1] !== null)) || // 1=4=7
-    ((gameboard[2] === gameboard[5]) && (gameboard[5] === gameboard[8]) && (gameboard[2] !== null)) || // 2=5=8
-    ((gameboard[0] === gameboard[4]) && (gameboard[4] === gameboard[8]) && (gameboard[0] !== null)) || // 0=4=8
-    ((gameboard[6] === gameboard[4]) && (gameboard[4] === gameboard[2]) && (gameboard[6] !== null)) // 6=4=2
+    ((store.game.cells[0] === store.game.cells[1]) && (store.game.cells[1] === store.game.cells[2]) && (store.game.cells[0] !== '')) || // 0=1=2 OR
+    ((store.game.cells[3] === store.game.cells[4]) && (store.game.cells[4] === store.game.cells[5]) && (store.game.cells[3] !== '')) || // 3=4=5
+    ((store.game.cells[6] === store.game.cells[7]) && (store.game.cells[7] === store.game.cells[8]) && (store.game.cells[6] !== '')) || // 6=7=8
+    ((store.game.cells[0] === store.game.cells[3]) && (store.game.cells[3] === store.game.cells[6]) && (store.game.cells[0] !== '')) || // 0=3=6
+    ((store.game.cells[1] === store.game.cells[4]) && (store.game.cells[4] === store.game.cells[7]) && (store.game.cells[1] !== '')) || // 1=4=7
+    ((store.game.cells[2] === store.game.cells[5]) && (store.game.cells[5] === store.game.cells[8]) && (store.game.cells[2] !== '')) || // 2=5=8
+    ((store.game.cells[0] === store.game.cells[4]) && (store.game.cells[4] === store.game.cells[8]) && (store.game.cells[0] !== '')) || // 0=4=8
+    ((store.game.cells[6] === store.game.cells[4]) && (store.game.cells[4] === store.game.cells[2]) && (store.game.cells[6] !== '')) // 6=4=2
   )
 }
 
 const isDraw = function () {
   return (
-    (gameboard[0] !== null) &&
-    (gameboard[1] !== null) &&
-    (gameboard[2] !== null) &&
-    (gameboard[3] !== null) &&
-    (gameboard[4] !== null) &&
-    (gameboard[5] !== null) &&
-    (gameboard[6] !== null) &&
-    (gameboard[7] !== null) &&
-    (gameboard[8] !== null)
+    (store.game.cells[0] !== '') &&
+    (store.game.cells[1] !== '') &&
+    (store.game.cells[2] !== '') &&
+    (store.game.cells[3] !== '') &&
+    (store.game.cells[4] !== '') &&
+    (store.game.cells[5] !== '') &&
+    (store.game.cells[6] !== '') &&
+    (store.game.cells[7] !== '') &&
+    (store.game.cells[8] !== '')
   )
 }
 
 const switchPlayer = function () {
-  if (currentPlayer !== 'X') {
-    currentPlayer = 'X'
+  if (currentPlayer !== 'x') {
+    currentPlayer = 'x'
   } else {
-    currentPlayer = 'O'
+    currentPlayer = 'o'
   }
   console.log(currentPlayer + ' is current player')
   $('#current-player').text(currentPlayer + ' take your turn')
 }
 
 const placeMarker = function (currentPlayer, boxId, selectedBox) {
-  gameboard[boxId] = currentPlayer
+  store.game.cells[boxId] = currentPlayer
   $(selectedBox).text(currentPlayer)
 }
 
+const resetBoard = function () {
+  currentPlayer = ''
+  switchPlayer()
+  store.game = {
+    cells: ['', '', '', '', '', '', '', '', ''],
+    over: false
+  }
+}
+
 const clearAlert = function () {
-  $('#message').text('')
+  $('#game-message').text('')
+}
+
+const isOver = function() {
+  return isWinner() || isDraw()
 }
 
 module.exports = {
@@ -143,5 +174,7 @@ module.exports = {
   onSignUp,
   onSignIn,
   onChangePw,
-  onSignOut
+  onSignOut,
+  onStartNewGame,
+  onGetAllGames
 }

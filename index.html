@@ -16,7 +16,7 @@
         <h1>Tic Tac Toe</h1>
       </header>
 
-      <div id="auth-message"></div>
+      <div id="api-message"></div>
 
       <form id='sign-up' class="authentication">
         <fieldset>
@@ -53,6 +53,8 @@
         </fieldset>
       </form>
 
+
+
       <div class="gameboard container">
         <div class="row">
           <div class="col-4 box" id="0"></div>
@@ -70,6 +72,22 @@
           <div class="col-4 box" id="8"></div>
         </div>
       </div>
+
+
+
+      <button id="start-new-game">Start New Game</button>
+
+      <button id="get-all-games">View All Game Records</button>
+
+      <form id="get-game-by-id">
+        <fieldset>
+          <legend>View Game Record by ID</legend>
+          <input type="number" name="games[id]" placeholder="Enter Game ID">
+          <input type="submit" value="View Record">
+        </fieldset>
+      </form>
+
+
 
       <div id="current-player" class="bg-info"></div>
       <div id="game-message" class="alert alert-warning" role="alert"></div>

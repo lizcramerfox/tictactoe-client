@@ -43,7 +43,7 @@ Produce documentation in the form of a **README**, which must:
 
 ### API Specifications
 
-1.  [ ] Create new games on the server. (CREATE)
+1.  [x] Create new games on the server. (CREATE)
 1.  [ ] Update a game by storing new moves. (UPDATE)
 1.  [ ] Visually display the results of retrieving game statistics, such as total games won by a user. (READ)
 1.  [ ] Give feedback to the user after each action.
@@ -54,10 +54,10 @@ Produce documentation in the form of a **README**, which must:
 1.  [x] Login with email and password.
 1.  [x] Logout when logged in.
 1.  [x] Change password with current and new password.
-1.  [ ] Signup and Signin must only be available to not signed in users.
-1.  [ ] Logout and Change password must only be available to signed in users.
+1.  [x] Signup and Signin must only be available to not signed in users.
+1.  [x] Logout and Change password must only be available to signed in users.
 1.  [x] Give feedback to the user after each action's success or failure.
-1.  [ ] All forms must clear after submit success or failure
+1.  [x] All forms must clear after submit success or failure
 
 ### DO NOT!!
 

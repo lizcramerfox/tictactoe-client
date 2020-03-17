@@ -34,21 +34,66 @@ const changePw = function (data) {
 }
 
 const signOut = function (data) {
+  console.log(data)
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: {}
   })
 }
 
+const startNewGame = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {}
+  })
+}
+
+
+const getAllGames = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+
+const updateGame = function (index, value, over) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: value
+        },
+        over: over
+      }
+    }
+  })
+}
 
 // export the api functions, so they can be used in `events.js`
 module.exports = {
   signUp,
   signIn,
   changePw,
-  signOut
+  signOut,
+  startNewGame,
+  updateGame,
+  getAllGames
 }
