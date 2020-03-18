@@ -18,7 +18,7 @@
 
       <div id="api-message"></div>
 
-      <form id='sign-up' class="authentication">
+      <form id="sign-up" class="authentication">
         <fieldset>
           <legend>Sign Up</legend>
           <input type="text" name="credentials[email]" placeholder="Email">
@@ -28,7 +28,7 @@
         </fieldset>
       </form>
 
-      <form id='sign-in' class="authentication">
+      <form id="sign-in" class="authentication">
         <fieldset>
           <legend>Sign In</legend>
           <input type="text" name="credentials[email]" placeholder="Email">
@@ -37,7 +37,7 @@
         </fieldset>
       </form>
 
-      <form id='change-pw' class="authentication hidden">
+      <form id="change-pw" class="authentication hidden">
         <fieldset>
           <legend>Change Password</legend>
           <input type="password" name="passwords[old]" placeholder="Old Password">
@@ -55,7 +55,7 @@
 
 
 
-      <div class="gameboard container">
+      <div id="gameboard" class="container hidden">
         <div class="row">
           <div class="col-4 box" id="0"></div>
           <div class="col-4 box" id="1"></div>
@@ -73,8 +73,8 @@
         </div>
       </div>
 
-      <div id="current-player" class="messages"></div>
-      <div id="game-message" class="messages"></div>
+      <div id="current-player" class="messages hidden"></div>
+      <div id="game-message" class="messages hidden"></div>
 
       <div class='button-wrapper'>
         <button id="start-new-game">Start New Game</button>

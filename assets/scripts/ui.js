@@ -25,6 +25,8 @@ const signInSuccess = function (data) {
   $('#sign-in').addClass('hidden')
   $('#change-pw').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
+  $('#gameboard').removeClass('hidden')
+  $('.messages').removeClass('hidden')
   console.log('signInSuccess data is: ', data)
   store.user = data.user
 }
@@ -58,6 +60,8 @@ const signOutSuccess = function (data) {
   $('#sign-in').removeClass('hidden')
   $('#change-pw').addClass('hidden')
   $('#sign-out').addClass('hidden')
+  $('#gameboard').addClass('hidden')
+  $('.messages').addClass('hidden')
   console.log('signOutSuccess data is: ', data)
 }
 
@@ -72,6 +76,7 @@ const startNewGameSuccess = function (data) {
   $('#api-message').text('New Game Started')
   $('#api-message').removeClass()
   $('#api-message').addClass('success')
+  $('.messages').text('')
   store.game = data.game
   drawGame()
 }
@@ -116,7 +121,7 @@ const getAllGamesSuccess = function (data) {
 const displayGamesData = function () {
   let i
   for (i = 0; i < store.games.length; i++) {
-    $('#game-data-display').text(store.games[i])
+    $('#game-data-display').text(store.games[i].id)
   }
 }
 
