@@ -27,6 +27,8 @@ const signInSuccess = function (data) {
   $('#sign-out').removeClass('hidden')
   $('#gameboard').removeClass('hidden')
   $('.messages').removeClass('hidden')
+  $('.button').removeClass('hidden')
+  $('.games-display').removeClass('hidden')
   console.log('signInSuccess data is: ', data)
   store.user = data.user
 }
@@ -76,6 +78,8 @@ const startNewGameSuccess = function (data) {
   $('#api-message').text('New Game Started')
   $('#api-message').removeClass()
   $('#api-message').addClass('success')
+  $('.button').removeClass('hidden')
+  $('.games-display').removeClass('hidden')
   $('.messages').text('')
   store.game = data.game
   drawGame()

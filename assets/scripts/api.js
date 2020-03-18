@@ -56,7 +56,6 @@ const startNewGame = function () {
   })
 }
 
-
 const getAllGames = function () {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -66,7 +65,6 @@ const getAllGames = function () {
     }
   })
 }
-
 
 const updateGame = function (index, value, over) {
   return $.ajax({

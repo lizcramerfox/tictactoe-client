@@ -77,11 +77,11 @@
       <div id="game-message" class="messages hidden"></div>
 
       <div class='button-wrapper'>
-        <button id="start-new-game">Start New Game</button>
-        <button id="get-all-games">View All Game Records</button>
+        <button id="start-new-game" class="button hidden">Start New Game</button>
+        <button id="get-all-games" class="button hidden">View All Game Records</button>
       </div>
 
-      <form id="get-game-by-id" class="games-display">
+      <form id="get-game-by-id" class="games-display hidden">
         <fieldset>
           <legend>View Game Record by ID</legend>
           <input type="number" name="games[id]" placeholder="Enter Game ID">
@@ -89,7 +89,7 @@
         </fieldset>
       </form>
 
-      <div id="game-data-display" class="bg-light"></div>
+      <div id="game-data-display" class="games-display bg-light hidden"></div>
 
     </body>
 </html>

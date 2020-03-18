@@ -8,14 +8,7 @@ h1 {
   padding: 1em 0;
 }
 
-.button-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 660px;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .authentication, .games-display {
   width: 660px;
@@ -56,6 +49,15 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 660px;
+  align-items: center;
+  justify-content: center;
 }
 
 #game-message {
