@@ -5,8 +5,12 @@ const getFormFields = require('./../../lib/get-form-fields')
 
 let currentPlayer
 
-// *** AUTHENTICATION ***
-// Sign-Up (New User)
+
+////////////////////////////
+//   API Authentication   //
+////////////////////////////
+
+// SIGN-UP (New User)
 const onSignUp = function (event) {
   event.preventDefault()
   console.log('Signing up')
@@ -16,7 +20,7 @@ const onSignUp = function (event) {
     .catch(ui.signUpFailure)
   document.getElementById('sign-up').reset()
 }
-// Sign-In (Existing User, NOT Currently Logged-In)
+// SIGN-IN (Existing User, NOT Currently Logged-In)
 const onSignIn = function (event) {
   event.preventDefault()
   console.log('Signing in')
@@ -26,7 +30,7 @@ const onSignIn = function (event) {
     .catch(ui.signInFailure)
   document.getElementById('sign-in').reset()
 }
-// Change Password (Currently Logged-In User)
+// CHANGE-PASSWORD (Currently Logged-In User)
 const onChangePw = function (event) {
   event.preventDefault()
   console.log('Changing Password')
@@ -37,7 +41,7 @@ const onChangePw = function (event) {
   document.getElementById('change-pw').reset()
 }
 
-// Sign Out (Currently Logged-In User)
+// SIGN-OUT (Currently Logged-In User)
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('Logging Out')
@@ -46,14 +50,18 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
+//////////////////////////
+//   API Game History   //
+//////////////////////////
 
-// GAME SAVING & RETRIEVAL
+// Start a new game
 const onStartNewGame = function (event) {
   event.preventDefault()
   api.startNewGame()
     .then(ui.startNewGameSuccess)
     .catch(ui.startNewGameFailure)
 }
+// Update the server after each move
 // const onUpdateGame = function (event) {
 //   event.preventDefault()
 //   api.updateGame()
@@ -61,6 +69,7 @@ const onStartNewGame = function (event) {
 //     .catch(ui.updateGameFailure)
 // }
 
+// Display all games associated with current user
 const onGetAllGames = function (event) {
   event.preventDefault()
   api.getAllGames()
@@ -68,17 +77,21 @@ const onGetAllGames = function (event) {
     .catch(ui.getAllGamesFailure)
 }
 
-// *** GAME ENGINE ***
-// Select a box when user clicks it
+/////////////////////////////////
+// Tic-Tac-Toe Gameplay Script //
+/////////////////////////////////
+
+// When a user clicks a box to indicate their desired move
 const selectBox = function (event) {
-  // check if the board has a winner OR a draw (game is over)
+  // Check the board for GAME OVER scenerios (which ends)
   if (isWinner()) {
+    // GAME OVER (There is a winner)
     return
-  }
+  } // GAME OVER (There is a draw)
   if (isDraw()) {
     return
   }
-  // clear any existing alert messages before making next valid move
+  // clear any existing user messages
   clearAlert()
   // let player make a move
   const selectedBox = event.target
@@ -88,9 +101,11 @@ const selectBox = function (event) {
     $('#game-message').text('Invalid move: please choose a blank square')
     return
   }
+  // place x/o marker in the appropriate box as specified by user
   placeMarker(currentPlayer, boxId, selectedBox)
-
+  // check if last move resulted in a winner
   if (isWinner()) {
+    // If there IS a winner:
     $('#game-message').text('GAME OVER - ' + currentPlayer + ' wins!')
     $('#current-player').text('')
     console.log(currentPlayer + ' wins')
@@ -101,12 +116,13 @@ const selectBox = function (event) {
   } else {
     switchPlayer()
   }
-  updateGame(boxId, currentPlayer, isOver())
+  api.updateGame(boxId, currentPlayer, isOver())
 }
 
+//////////////////////
+// Test for Winners //
+//////////////////////
 
-
-// CHECK FOR WINNER:
 // Pass the array through a function to check if:
 const isWinner = function () {
   // if ANY of the following are true:
@@ -135,6 +151,10 @@ const isDraw = function () {
     (store.game.cells[8] !== '')
   )
 }
+
+/////////////////////////////////
+// GAME & BOARD PLAY FUNCTIONS //
+/////////////////////////////////
 
 const switchPlayer = function () {
   if (currentPlayer !== 'x') {

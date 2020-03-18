@@ -33,20 +33,20 @@ Produce documentation in the form of a **README**, which must:
 ### Technical Specifications
 
 1.  [x] Use a custom game engine written by you.
-1.  [ ] Be a single-page application, no browser refresh.
+1.  [x] Be a single-page application, no browser refresh.
 1.  [x] Render a game board in the browser.
 1.  [x] Switch turns between X and O (or whichever markers you select).  Tip:  Assume player X is the first player to start the game.
 1.  [x] Visually display which side won if a player gets three in a row or show a draw if neither wins.
 1.  [ ] Support playing multiple games, one at a time.
 1.  [x] Use jQuery for DOM manipulation and event handling.
-1.  [ ] Use AJAX for interacting with a provided API.
+1.  [x] Use AJAX for interacting with a provided API.
 
 ### API Specifications
 
 1.  [x] Create new games on the server. (CREATE)
 1.  [ ] Update a game by storing new moves. (UPDATE)
 1.  [ ] Visually display the results of retrieving game statistics, such as total games won by a user. (READ)
-1.  [ ] Give feedback to the user after each action.
+1.  [x] Give feedback to the user after each action.
 
 ### Auth Specifications
 

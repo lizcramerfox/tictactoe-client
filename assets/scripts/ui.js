@@ -1,7 +1,7 @@
 'use strict'
 
 const store = require('./store')
-const gameEvents = require('./events.js')
+// const gameEvents = require('./events.js')
 
 const signUpSuccess = function (data) {
   $('#api-message').text('Signed up Successfully')
@@ -104,11 +104,20 @@ const updateGameFailure = function () {
   console.log('Failed to Create New Game')
 }
 
-const getAllGamesSuccess = function () {
+const getAllGamesSuccess = function (data) {
   $('#api-message').text('Success retrieving all game records')
   $('#api-message').removeClass()
   $('#api-message').addClass('success')
-  console.log('all game data should now be on screen')
+  console.log('all game data is stored')
+  store.games = data.games
+  displayGamesData()
+}
+
+const displayGamesData = function () {
+  let i
+  for (i = 0; i < store.games.length; i++) {
+    $('#game-data-display').text(store.games[i])
+  }
 }
 
 const getAllGamesFailure = function () {
