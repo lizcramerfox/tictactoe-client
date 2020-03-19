@@ -5,10 +5,7 @@ const getFormFields = require('./../../lib/get-form-fields')
 
 let currentPlayer
 
-
-////////////////////////////
-//   API Authentication   //
-////////////////////////////
+//--------------------API Authentication--------------------------//
 
 // SIGN-UP (New User)
 const onSignUp = function (event) {
@@ -61,13 +58,6 @@ const onStartNewGame = function (event) {
     .then(ui.startNewGameSuccess)
     .catch(ui.startNewGameFailure)
 }
-// Update the server after each move
-// const onUpdateGame = function (event) {
-//   event.preventDefault()
-//   api.updateGame()
-//     .then(ui.updateGameSuccess)
-//     .catch(ui.updateGameFailure)
-// }
 
 // Display all games associated with current user
 const onGetAllGames = function (event) {
@@ -84,7 +74,7 @@ const onGetAllGames = function (event) {
 // When a user clicks a box to indicate their desired move
 const selectBox = function (event) {
   // Check the board for GAME OVER scenerios (which ends)
-  if (isWinner()) {
+  if (isWinner()) { // * replace both game overs with : isOver()
     // GAME OVER (There is a winner)
     return
   } // GAME OVER (There is a draw)
