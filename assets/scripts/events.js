@@ -71,7 +71,7 @@ let currentPlayer
 const selectBox = function (event) {
 
   // Check the board for GAME OVER scenerios (which ends)
-  if (isWinner()) { // * replace both game overs with : isOver()
+  if (isWinner()) { // * you can replace both game overs with new function: isOver()
     // GAME OVER (There is a winner)
     return
   } // GAME OVER (There is a draw)

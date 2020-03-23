@@ -26,6 +26,7 @@ const signInSuccess = function (data) {
   $('#change-pw').removeClass('hidden')
   $('#sign-out').removeClass('hidden')
   $('.button').removeClass('hidden')
+  $('.games-display').removeClass('hidden')
   // console.log('signInSuccess data is: ', data)
   store.user = data.user
 }
@@ -77,8 +78,8 @@ const startNewGameSuccess = function (data) {
   $('#api-message').removeClass()
   $('#api-message').addClass('success')
   $('.button').removeClass('hidden')
-  $('.games-display').removeClass('hidden')
-  $('.messages').text('')
+  $('.message').removeClass('hidden')
+  $('#game-message').text('')
   $('#gameboard').removeClass('hidden')
   $('#current-player').removeClass('hidden')
   $('#current-player').text('x take your turn')
