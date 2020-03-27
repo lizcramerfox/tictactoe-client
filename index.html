@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Tic-Tac-Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <header>
-        <h1>Tic Tac Toe</h1>
-      </header>
+    <!-- Do not add `script` tags-->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
 
-      <div id="api-message"></div>
+  <body>
 
-      <form id="sign-up" class="authentication">
-        <fieldset>
-          <legend>Sign Up</legend>
-          <input type="text" name="credentials[email]" placeholder="Email">
-          <input type="password" name="credentials[password]" placeholder="Password">
-          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-          <input type="submit" value="Sign Up!">
-        </fieldset>
-      </form>
+    <div class="row">
+      <div id="header" class="col-12">
+      <header><h1>Tic Tac Toe</h1></header>
+    </div>
+    </div>
 
-      <form id="sign-in" class="authentication">
-        <fieldset>
-          <legend>Sign In</legend>
-          <input type="text" name="credentials[email]" placeholder="Email">
-          <input type="password" name="credentials[password]" placeholder="Password">
-          <input type="submit" value="Sign In!">
-        </fieldset>
-      </form>
-
-      <form id="change-pw" class="authentication hidden">
-        <fieldset>
-          <legend>Change Password</legend>
-          <input type="password" name="passwords[old]" placeholder="Old Password">
-          <input type="password" name="passwords[new]" placeholder="New Password">
-          <input type="submit" value="Change Password">
-        </fieldset>
-      </form>
-
-      <form id="sign-out" class="authentication hidden">
-        <fieldset>
-          <legend>Sign Out</legend>
-          <input type="submit" value="Sign Out">
-        </fieldset>
-      </form>
-
-
-
-      <div id="gameboard" class="container hidden">
-        <div class="row">
-          <div class="col-4 box" id="0"></div>
-          <div class="col-4 box" id="1"></div>
-          <div class="col-4 box" id="2"></div>
-        </div>
-        <div class="row">
-          <div class="col-4 box" id="3"></div>
-          <div class="col-4 box" id="4"></div>
-          <div class="col-4 box" id="5"></div>
-        </div>
-        <div class="row">
-          <div class="col-4 box" id="6"></div>
-          <div class="col-4 box" id="7"></div>
-          <div class="col-4 box" id="8"></div>
-        </div>
+    <div class="row">
+      <div class="col-8">
+        <section id="game-area">
+          <button id="start-new-game" class="button hidden">Start New Game</button>
+          <div id="gameboard" class="hidden">
+            <div class="row">
+              <div class="col-4 box" id="0"></div>
+              <div class="col-4 box" id="1"></div>
+              <div class="col-4 box" id="2"></div>
+            </div>
+            <div class="row">
+              <div class="col-4 box" id="3"></div>
+              <div class="col-4 box" id="4"></div>
+              <div class="col-4 box" id="5"></div>
+            </div>
+            <div class="row">
+              <div class="col-4 box" id="6"></div>
+              <div class="col-4 box" id="7"></div>
+              <div class="col-4 box" id="8"></div>
+            </div>
+          </div>
+          <div id="current-player" class="messages hidden"></div>
+          <div id="game-message" class="messages hidden"></div>
+        </section>
       </div>
+      <div class="col-3">
+        <section id=login-area>
+          <div id="api-message"></div>
+          <form id="sign-up" class="authentication">
+            <fieldset>
+              <legend>Sign Up</legend>
+              <input type="text" name="credentials[email]" placeholder="Email">
+              <input type="password" name="credentials[password]" placeholder="Password">
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              <input type="submit" value="Sign Up!" class="button">
+            </fieldset>
+          </form>
 
-      <div id="current-player" class="messages hidden"></div>
-      <div id="game-message" class="messages hidden"></div>
+          <form id="sign-in" class="authentication">
+              <fieldset>
+                <legend>Sign In</legend>
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+                <input type="submit" value="Sign In!" class="button">
+              </fieldset>
+            </form>
 
-      <div class='button-wrapper'>
-        <button id="start-new-game" class="button hidden">Start New Game</button>
-        <button id="get-all-games" class="button hidden">View All Game Records</button>
+          <form id="change-pw" class="authentication hidden">
+              <fieldset>
+                <legend>Change Password</legend>
+                <input type="password" name="passwords[old]" placeholder="Old Password">
+                <input type="password" name="passwords[new]" placeholder="New Password">
+                <input type="submit" value="Change Password" class="button">
+              </fieldset>
+            </form>
+
+          <form id="sign-out" class="authentication hidden">
+              <fieldset>
+                <legend>Sign Out</legend>
+                <input type="submit" value="Sign Out" class="button">
+              </fieldset>
+            </form>
+
+          <button id="get-all-games" class="button hidden">View Game Count</button>
+
+          <div id="game-data-display" class="games-display bg-light hidden"></div>
+        </section>
       </div>
+    </div>
 
-      <form id="get-game-by-id" class="games-display hidden">
-        <fieldset>
-          <legend>View Game Record by ID</legend>
-          <input type="number" name="games[id]" placeholder="Enter Game ID">
-          <input type="submit" value="View Record">
-        </fieldset>
-      </form>
+  </body>
 
-      <div id="game-data-display" class="games-display bg-light hidden"></div>
-
-    </body>
 </html>

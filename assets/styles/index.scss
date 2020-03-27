@@ -1,40 +1,79 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Josefin+Slab&display=swap');
+
+$sage-dark: #97B2B5;
+$sage-light: #e1e9ea;
+$cream: #fdffe2;
+$blue-dark: #264c59;
+$green-success-background: #d4edda;
+$button-color-blue: #4a6669;
+
+
 body {
-  width: 80vw;
+  width: 100vw;
+  background-color: $sage-dark;
+  font-family: 'Josefin Slab', sans-serif;
+  align-self: center;
+  color: $blue-dark;
+  font-size: 16px;
+}
+
+header {
+
 }
 
 h1 {
+  font-family: 'Fredericka the Great', serif;
   text-align: center;
+  font-size: 6em;
+  color: $cream;
+  padding: .3em 0;
+}
+
+section {
+  margin: 0 .5em;
+}
+
+legend {
+  font-family: 'Fredericka the Great', serif;
+}
+
+.button {
+  background-color: $button-color-blue;
+  color: $cream;
+}
+
+.row {
+  margin: 0 auto;
   padding: 1em 0;
 }
 
-
-
-.authentication, .games-display {
-  width: 660px;
-  margin: 1em auto;
-  padding: .5em;
-  background-color: #e8e8e8;
-  border: 1px solid #000;
+#game-area .row {
+  padding: 0;
 }
 
-.container {
-  width: 660px;
-  height: 660px;
+.authentication, .games-display {
+  display: flex;
+  margin: 1em auto;
+  padding: .5em;
+  background-color: $sage-light;
 }
 
 .box {
-  display: flex;
-  border: 1px solid #000;
+  border: 1px solid $sage-dark;
+  background-color: $cream;
   height: 200px;
+  width: 200px;
   text-align: center;
+  justify-content: center;
+  font-family: 'Fredericka the Great', serif;
+  font-size: 5em;
 }
 
 .messages {
-  width: 660px;
   margin: .1em auto;
   padding: .1em;
-  background-color: #CCE5FF;
+  background-color: $sage-light;
 }
 
 .failure {
@@ -43,7 +82,7 @@ h1 {
 }
 
 .success {
-  background-color: #d4edda;
+  background-color: $green-success-background;
   color: #2c693a;
 }
 
@@ -51,35 +90,22 @@ h1 {
   display: none;
 }
 
-.button-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 660px;
-  align-items: center;
-  justify-content: center;
-}
-
 #game-message {
-  width: 660px;
   padding: 1em 0;
   margin: 0 auto;
-  color: #000;
   text-align: center;
 }
 
 #current-player {
-  width: 660px;
   padding: 1em 0;
   margin: 0 auto;
   color: #000;
   text-align: center;
 }
+
 #game-data-display {
-  border: 1px solid #000;
-  width: 660px;
+  border: 1px solid $sage-dark;
   padding: 1em 0;
   margin: 0 auto;
-  color: #000;
   text-align: center;
 }
