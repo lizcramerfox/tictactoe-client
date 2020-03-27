@@ -69,7 +69,6 @@ const onGetAllGames = function (event) {
 let currentPlayer
 // When a user clicks a box to indicate their desired move
 const selectBox = function (event) {
-
   // Check the board for GAME OVER scenerios (which ends)
   if (isWinner()) { // * you can replace both game overs with new function: isOver()
     // GAME OVER (There is a winner)

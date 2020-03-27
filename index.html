@@ -54,7 +54,7 @@
               <input type="text" name="credentials[email]" placeholder="Email">
               <input type="password" name="credentials[password]" placeholder="Password">
               <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-              <input type="submit" value="Sign Up!">
+              <input type="submit" value="Sign Up!" class="button">
             </fieldset>
           </form>
 
@@ -63,7 +63,7 @@
                 <legend>Sign In</legend>
                 <input type="text" name="credentials[email]" placeholder="Email">
                 <input type="password" name="credentials[password]" placeholder="Password">
-                <input type="submit" value="Sign In!">
+                <input type="submit" value="Sign In!" class="button">
               </fieldset>
             </form>
 
@@ -72,18 +72,18 @@
                 <legend>Change Password</legend>
                 <input type="password" name="passwords[old]" placeholder="Old Password">
                 <input type="password" name="passwords[new]" placeholder="New Password">
-                <input type="submit" value="Change Password">
+                <input type="submit" value="Change Password" class="button">
               </fieldset>
             </form>
 
           <form id="sign-out" class="authentication hidden">
               <fieldset>
                 <legend>Sign Out</legend>
-                <input type="submit" value="Sign Out">
+                <input type="submit" value="Sign Out" class="button">
               </fieldset>
             </form>
 
-          <button id="get-all-games" class="button hidden">View All Game Records</button>
+          <button id="get-all-games" class="button hidden">View Game Count</button>
 
           <div id="game-data-display" class="games-display bg-light hidden"></div>
         </section>

@@ -6,6 +6,7 @@ $sage-light: #e1e9ea;
 $cream: #fdffe2;
 $blue-dark: #264c59;
 $green-success-background: #d4edda;
+$button-color-blue: #4a6669;
 
 
 body {
@@ -14,16 +15,19 @@ body {
   font-family: 'Josefin Slab', sans-serif;
   align-self: center;
   color: $blue-dark;
+  font-size: 16px;
 }
 
 header {
-  font-family: 'Fredericka the Great', serif;
-  font-size: 6em;
+
 }
 
 h1 {
+  font-family: 'Fredericka the Great', serif;
   text-align: center;
-  padding: 1em 0;
+  font-size: 6em;
+  color: $cream;
+  padding: .3em 0;
 }
 
 section {
@@ -34,8 +38,9 @@ legend {
   font-family: 'Fredericka the Great', serif;
 }
 
-button {
-  background-color: $green-success-background;
+.button {
+  background-color: $button-color-blue;
+  color: $cream;
 }
 
 .row {
@@ -61,12 +66,14 @@ button {
   width: 200px;
   text-align: center;
   justify-content: center;
+  font-family: 'Fredericka the Great', serif;
+  font-size: 5em;
 }
 
-.message {
+.messages {
   margin: .1em auto;
   padding: .1em;
-  background-color: $sage-dark;
+  background-color: $sage-light;
 }
 
 .failure {

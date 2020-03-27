@@ -80,6 +80,7 @@ const startNewGameSuccess = function (data) {
   $('.button').removeClass('hidden')
   $('.message').removeClass('hidden')
   $('#game-message').text('')
+  $('#game-message').removeClass('hidden')
   $('#gameboard').removeClass('hidden')
   $('#current-player').removeClass('hidden')
   $('#current-player').text('x take your turn')
@@ -121,10 +122,7 @@ const getAllGamesSuccess = function (data) {
 }
 
 const displayGamesData = function () {
-  let i
-  for (i = 0; i < store.games.length; i++) {
-    $('#game-data-display').text(store.games[i].id)
-  }
+  $('#game-data-display').text('You have played: ' + store.games.length + ' games.')
 }
 
 const getAllGamesFailure = function () {
