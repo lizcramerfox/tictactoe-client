@@ -57,10 +57,10 @@ Here's a rough sketch of what you should do and in what order:
 1.  [x] Review [jquery-ajax-crud](https://git.generalassemb.ly/ga-wdi-boston/jquery-ajax-crud)
 1.  [x] Create Game, start new game (curl then web app)
 1.  [x] Update Game, play the game (curl then web app)
-1.  [ ] Get Games (curl then web app)
+1.  [x] Get Games (curl then web app)
 
 ### Final Touches
 
 1.  [ ] README
-1.  [ ] Troubleshoot/Debug
-1.  [ ] Style
+1.  [x] Troubleshoot/Debug
+1.  [x] Style

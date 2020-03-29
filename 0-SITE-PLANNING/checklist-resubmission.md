@@ -9,7 +9,7 @@ The following requirements for successful completion were not met:
 
 ### Document your planning and tell a story about your development process and problem-solving strategy.
 [] List unsolved problems which would be fixed in future iterations.
-[] Link to wireframes and user stories.
+[x] Link to wireframes and user stories.
 
 # Technical Specifications
 ### Switch turns between X and O (or whichever markers you select). Tip: Assume player X is the first player to start the game.
